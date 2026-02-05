@@ -1,0 +1,227 @@
+:root {
+  --primary: #d4af37;
+  /* Metallic Gold */
+  --primary-hover: #f1c40f;
+  /* Brighter Gold */
+  --secondary: #1a1a1a;
+  /* Deep Black */
+  --dark: #050505;
+  /* Pitch Black */
+  --light: #e0e0e0;
+  /* Platinum Gray for text */
+  --gray: #888888;
+  --success: #22c55e;
+  --error: #ef4444;
+  --font-main: 'Outfit', 'Inter', system-ui, sans-serif;
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f1c40f 100%);
+  --dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--dark);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  color: var(--light);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+.btn {
+  padding: 0.75rem 1.8rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--gold-gradient);
+  color: var(--dark);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Premium Glassmorphism */
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 1.25rem;
+  transition: border-color 0.3s ease;
+}
+
+.glass:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* Global scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glitter Golden Text Effect */
+@keyframes glitter {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glitter-text {
+  background: linear-gradient(90deg,
+      #d4af37 0%,
+      #f1c40f 25%,
+      #fff 50%,
+      #f1c40f 75%,
+      #d4af37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glitter 3s linear infinite;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary.shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 55%);
+  transform: rotate(30deg);
+  animation: button-shimmer 3s infinite;
+}
+
+@keyframes button-shimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Light Wave Motion Text Effect */
+@keyframes wave-motion {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wave-text {
+  background: linear-gradient(120deg,
+      #ffffff 0%,
+      #f5d76e 25%,
+      #e0e0e0 50%,
+      #f5d76e 75%,
+      #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave-motion 5s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-title.wave-text {
+  animation: wave-motion 5s ease-in-out infinite, float 8s ease-in-out infinite;
+}
