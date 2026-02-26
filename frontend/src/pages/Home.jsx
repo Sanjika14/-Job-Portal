@@ -23,7 +23,7 @@ const Home = () => {
                 <Link to="/register" className="btn btn-outline btn-lg">Join as Job Seeker</Link>
               </>
             ) : (
-              <Link to="/browse-jobs" className="btn btn-primary btn-lg shimmer">Browse All Jobs</Link>
+              <Link to="/jobs" className="btn btn-primary btn-lg shimmer">Browse All Jobs</Link>
             )}
           </div>
         </div>
