@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./config/db');
+const mongoose = require("mongoose");
 const authRoutes = require('./routes/authRoutes');
 const jobRoutes = require('./routes/jobRoutes');
 const applicationRoutes = require('./routes/applicationRoutes');
@@ -12,7 +12,9 @@ const adminRoutes = require('./routes/adminRoutes');
 
 dotenv.config();
 
-connectDB();
+mongoose.connect("mongodb+srv://sanjikakarthikeyan_db_user:MPEs8EYwuN05XzHw@cluster0.s5kfwyt.mongodb.net/?appName=Cluster0")
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => console.log(err));
 
 const app = express();
 
