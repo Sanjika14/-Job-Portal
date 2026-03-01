@@ -1,0 +1,7 @@
+{
+    "name": "job-portal",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "concurrently \"cd backend && node server.js\" \"cd frontend && npm run dev\""
+    }
+}

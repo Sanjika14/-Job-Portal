@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, 'supersecret_jobportal_123!', {
+    return jwt.sign({ id }, process.env.JWT_SECRET || 'supersecret_jobportal_123!', {
         expiresIn: '30d',
     });
 };
