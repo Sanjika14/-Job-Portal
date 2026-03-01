@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/job-portal"
 const app = express();
 
 app.use(cors({
-    origin: "*",
+    origin: "https://job-portal-4vht.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
