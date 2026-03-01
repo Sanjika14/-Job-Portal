@@ -21,6 +21,7 @@ import AdminJobManagement from './pages/AdminJobManagement';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import VerifyEmail from './pages/VerifyEmail';
+import Jobs from './Jobs';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/admin/jobs" element={<AdminJobManagement />} />
 
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/test-jobs" element={<Jobs />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/verify/:token" element={<VerifyEmail />} />
           </Routes>

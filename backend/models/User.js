@@ -19,9 +19,8 @@ const userSchema = mongoose.Schema(
         },
         role: {
             type: String,
-            required: true,
-            enum: ['jobseeker', 'recruiter', 'admin'],
-            default: 'jobseeker',
+            enum: ['user', 'admin', 'jobseeker', 'recruiter'],
+            default: 'user',
         },
         isVerified: {
             type: Boolean,

@@ -9,18 +9,25 @@ const recruiterRoutes = require('./routes/recruiterRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const User = require("./models/User");
+
+
 
 dotenv.config();
 
-mongoose.connect("mongodb+srv://sanjikakarthikeyan_db_user:MPEs8EYwuN05XzHw@cluster0.s5kfwyt.mongodb.net/?appName=Cluster0")
-    .then(() => console.log("MongoDB Connected"))
-    .catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/job-portal")
+    .then(() => console.log("Database connected"))
+    .catch((err) => console.log("Database connection error:", err));
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
+
+// Routes are handled by middleware below
+
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
