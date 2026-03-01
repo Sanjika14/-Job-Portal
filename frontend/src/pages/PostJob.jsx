@@ -30,7 +30,7 @@ const PostJob = () => {
                 skillsRequired: formData.skillsRequired.split(',').map(s => s.trim()),
                 salary: Number(formData.salary),
             };
-            await axios.post('http://localhost:5055/api/recruiter/jobs', data, config);
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/recruiter/jobs`, data, config);
             alert('Job posted successfully!');
             navigate('/manage-jobs');
         } catch (err) {

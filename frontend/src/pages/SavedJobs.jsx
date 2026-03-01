@@ -12,7 +12,7 @@ const SavedJobs = () => {
         const fetchSavedJobs = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5055/api/auth/saved-jobs', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/saved-jobs`, config);
                 setJobs(data);
                 setLoading(false);
             } catch (err) {
@@ -26,7 +26,7 @@ const SavedJobs = () => {
     const handleRemove = async (id) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.delete(`http://localhost:5055/api/auth/save-job/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/auth/save-job/${id}`, config);
             setJobs(jobs.filter(job => job._id !== id));
         } catch (err) {
             alert('Failed to remove job');

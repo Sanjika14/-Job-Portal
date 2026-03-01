@@ -14,7 +14,7 @@ const ManageJobs = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` },
                 };
-                const { data } = await axios.get('http://localhost:5055/api/recruiter/jobs', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/recruiter/jobs`, config);
                 setJobs(data);
                 setLoading(false);
             } catch (err) {
@@ -31,7 +31,7 @@ const ManageJobs = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
-            await axios.delete(`http://localhost:5055/api/recruiter/jobs/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/recruiter/jobs/${id}`, config);
             setJobs(jobs.filter(job => job._id !== id));
             alert('Job deleted');
         } catch (err) {

@@ -13,7 +13,7 @@ const AppliedJobs = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` },
                 };
-                const { data } = await axios.get('http://localhost:5055/api/applications/my', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/applications/my`, config);
                 setApplications(data);
                 setLoading(false);
             } catch (err) {
@@ -30,7 +30,7 @@ const AppliedJobs = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
-            await axios.delete(`http://localhost:5055/api/applications/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/applications/${id}`, config);
             setApplications(applications.filter(app => app._id !== id));
             alert('Application withdrawn');
         } catch (err) {

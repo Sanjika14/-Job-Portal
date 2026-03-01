@@ -12,7 +12,7 @@ const RecruiterDashboard = () => {
         const fetchDashboard = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5055/api/dashboard/recruiter', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/dashboard/recruiter`, config);
                 setData(data);
                 setLoading(false);
             } catch (err) {

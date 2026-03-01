@@ -13,7 +13,7 @@ const ResetPassword = () => {
         if (password !== confirmPassword) return alert('Passwords do not match');
 
         try {
-            await axios.put(`http://localhost:5055/api/auth/reset-password/${token}`, { password });
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/auth/reset-password/${token}`, { password });
             alert('Password reset successful. Please login.');
             navigate('/login');
         } catch (err) {

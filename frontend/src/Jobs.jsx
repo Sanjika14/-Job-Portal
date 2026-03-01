@@ -5,7 +5,7 @@ function Jobs() {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5055/api/jobs")
+        axios.get(`${import.meta.env.VITE_API_URL}/api/jobs`)
             .then((response) => {
                 setJobs(response.data);
             })

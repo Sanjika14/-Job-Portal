@@ -11,7 +11,7 @@ const AdminJobManagement = () => {
         const fetchJobs = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5055/api/admin/jobs', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/jobs`, config);
                 setJobs(data);
                 setLoading(false);
             } catch (err) {
@@ -25,7 +25,7 @@ const AdminJobManagement = () => {
     const handleStatusUpdate = async (id, status) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5055/api/admin/jobs/${id}`, { status }, config);
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/admin/jobs/${id}`, { status }, config);
             setJobs(jobs.map(j => j._id === id ? { ...j, status } : j));
             alert(`Job status updated to ${status}`);
         } catch (err) {
@@ -43,7 +43,7 @@ const AdminJobManagement = () => {
                     <p>Review and moderate all job postings system-wide</p>
                 </div>
                 <a
-                    href="http://localhost:5055/api/admin/export/jobs"
+                    href={`${import.meta.env.VITE_API_URL}/api/admin/export/jobs`}
                     className="btn btn-primary"
                     style={{ textDecoration: 'none' }}
                     target="_blank"

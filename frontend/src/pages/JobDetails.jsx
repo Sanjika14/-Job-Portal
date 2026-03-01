@@ -13,7 +13,7 @@ const JobDetails = () => {
     useEffect(() => {
         const fetchJob = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5055/api/jobs/${id}`);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`);
                 setJob(data);
                 setLoading(false);
             } catch (err) {
@@ -39,7 +39,7 @@ const JobDetails = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
-            await axios.post('http://localhost:5055/api/applications', { jobId: id }, config);
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/applications`, { jobId: id }, config);
             alert('Application submitted successfully!');
             navigate('/applied-jobs');
         } catch (err) {
@@ -52,7 +52,7 @@ const JobDetails = () => {
         if (!user) { navigate('/login'); return; }
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.post(`http://localhost:5055/api/auth/save-job/${id}`, {}, config);
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/save-job/${id}`, {}, config);
             alert('Job bookmarked!');
         } catch (err) {
             alert(err.response?.data?.message || 'Failed to save job');

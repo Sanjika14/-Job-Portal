@@ -12,7 +12,7 @@ const AdminDashboard = () => {
         const fetchAnalytics = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5055/api/admin/analytics', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/analytics`, config);
                 setData(data);
                 setLoading(false);
             } catch (err) {

@@ -11,7 +11,7 @@ const AdminUserManagement = () => {
         const fetchUsers = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5055/api/admin/users', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, config);
                 setUsers(data);
                 setLoading(false);
             } catch (err) {
@@ -26,7 +26,7 @@ const AdminUserManagement = () => {
         if (!window.confirm('Are you sure you want to delete this user? This cannot be undone.')) return;
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.delete(`http://localhost:5055/api/admin/users/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/users/${id}`, config);
             setUsers(users.filter(u => u._id !== id));
             alert('User removed');
         } catch (err) {

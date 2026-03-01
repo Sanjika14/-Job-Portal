@@ -9,7 +9,7 @@ const VerifyEmail = () => {
     useEffect(() => {
         const verify = async () => {
             try {
-                await axios.get(`http://localhost:5055/api/auth/verify/${token}`);
+                await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/verify/${token}`);
                 setStatus('success');
             } catch (err) {
                 setStatus('error');

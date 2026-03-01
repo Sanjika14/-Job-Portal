@@ -38,7 +38,7 @@ const Profile = () => {
                 ...profileData,
                 skills: profileData.skills.split(',').map(s => s.trim()),
             };
-            const { data: updatedData } = await axios.put('http://localhost:5055/api/auth/profile', data, config);
+            const { data: updatedData } = await axios.put(`${import.meta.env.VITE_API_URL}/api/auth/profile`, data, config);
             updateUser({ ...user, ...updatedData });
             alert('Profile updated successfully');
 
@@ -59,7 +59,7 @@ const Profile = () => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data: uploadData } = await axios.post('http://localhost:5055/api/auth/resume', formData, config);
+            const { data: uploadData } = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/resume`, formData, config);
 
             // Update global user state with new resume path
             const updatedUser = { ...user };
@@ -121,7 +121,7 @@ const Profile = () => {
                         </form>
                         {user.profile?.resume && (
                             <div style={{ marginTop: '1rem' }}>
-                                <a href={`http://localhost:5055${user.profile.resume}`} target="_blank" rel="noreferrer" className="btn btn-secondary">View Current Resume</a>
+                                <a href={`${import.meta.env.VITE_API_URL}${user.profile.resume}`} target="_blank" rel="noreferrer" className="btn btn-secondary">View Current Resume</a>
                             </div>
                         )}
                     </section>

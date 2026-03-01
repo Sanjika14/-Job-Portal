@@ -15,7 +15,7 @@ const JobApplicants = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` },
                 };
-                const { data } = await axios.get(`http://localhost:5055/api/recruiter/jobs/${id}/applicants`, config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/recruiter/jobs/${id}/applicants`, config);
                 setApplicants(data);
                 setLoading(false);
             } catch (err) {
@@ -31,7 +31,7 @@ const JobApplicants = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
-            await axios.put(`http://localhost:5055/api/recruiter/applications/${appId}`, { status }, config);
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/recruiter/applications/${appId}`, { status }, config);
             setApplicants(applicants.map(app => app._id === appId ? { ...app, status } : app));
             alert(`Application marked as ${status}`);
         } catch (err) {
@@ -63,7 +63,7 @@ const JobApplicants = () => {
                                 </div>
                             </div>
                             <div className="applicant-actions">
-                                <a href={`http://localhost:5055${app.resume}`} target="_blank" rel="noreferrer" className="btn btn-secondary">View Resume</a>
+                                <a href={`${import.meta.env.VITE_API_URL}${app.resume}`} target="_blank" rel="noreferrer" className="btn btn-secondary">View Resume</a>
                                 <div className="status-controls">
                                     <button onClick={() => handleStatusUpdate(app._id, 'Reviewed')} className="btn-small">Shortlist</button>
                                     <button onClick={() => handleStatusUpdate(app._id, 'Accepted')} className="btn-small btn-success">Accept</button>
