@@ -1,5 +1,5 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require("express");
+require("dotenv").config();
 const cors = require('cors');
 const mongoose = require("mongoose");
 const authRoutes = require('./routes/authRoutes');
@@ -15,9 +15,9 @@ const User = require("./models/User");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/job-portal")
-    .then(() => console.log("Database connected"))
-    .catch((err) => console.log("Database connection error:", err));
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log(err));
 
 const app = express();
 
@@ -56,7 +56,7 @@ app.use((err, req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 5055;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`========================================`);
