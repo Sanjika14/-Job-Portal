@@ -13,7 +13,8 @@ const User = require("./models/User");
 
 
 
-dotenv.config();
+
+// dotenv.config(); // Removed redundant call
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB Connected"))
