@@ -10,11 +10,15 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Attempting login to URL:", import.meta.env.VITE_API_URL);
         try {
             await login(email, password);
+            console.log("Login successful!");
             navigate('/');
         } catch (err) {
-            alert(err.response?.data?.message || 'Login failed');
+            console.error("Login Error Detailed:", err);
+            console.error("Response data:", err.response?.data);
+            alert(err.response?.data?.message || err.message || 'Login failed - Check console for details');
         }
     };
 

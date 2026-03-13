@@ -14,11 +14,15 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Attempting registration to URL:", import.meta.env.VITE_API_URL);
         try {
             await register(formData.name, formData.email, formData.password, formData.role);
+            console.log("Registration successful!");
             navigate('/');
         } catch (err) {
-            alert(err.response?.data?.message || 'Registration failed');
+            console.error("Registration Error Detailed:", err);
+            console.error("Response data:", err.response?.data);
+            alert(err.response?.data?.message || err.message || 'Registration failed - Check console for details');
         }
     };
 
