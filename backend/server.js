@@ -23,14 +23,7 @@ mongoose.connect(process.env.MONGO_URI)
 const app = express();
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        if (origin.startsWith('http://localhost:') || origin === 'https://job-portal-4vht.vercel.app') {
-            return callback(null, true);
-        }
-        return callback(new Error('Not allowed by CORS'), false);
-    },
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
